@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>ASWIN WINDFARMS</title>
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+
+  <!-- Chart.js -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Roboto', sans-serif;
+      background: url('https://www.ge.com/news/sites/default/files/Reports/2020-03/GE_Akilli_Ruzgar_Tirbunu_3.2-103-2.jpg') no-repeat center center fixed;
+      background-size: cover;
+      color: #333;
+      padding: 30px;
+      text-align: center;
+      transition: 0.3s;
+    }
+
+    h1 {
+      margin-bottom: 30px;
+      font-weight: 700;
+      color: white;
+      text-shadow: 2px 2px 4px #000;
+    }
+
+    .toggle {
+      cursor: pointer;
+      position: fixed;
+      top: 20px;
+      right: 20px;
+      display: flex;
+      justify-content: space-between;
+      width: 80px;
+      height: 40px;
+      border-radius: 50px;
+      background: linear-gradient(145deg, #e1e1e1, #fff);
+      box-shadow: 3px 3px 4px #e6e6e6, -3px -3px 4px #ffffff;
+      transition: 0.5s;
+    }
+
+    .toggle i {
+      width: 50%;
+      line-height: 40px;
+      text-align: center;
+      font-size: 24px;
+    }
+
+    .toggle .ball {
+      position: absolute;
+      width: 30px;
+      height: 30px;
+      margin: 5px;
+      border-radius: 50%;
+      background: #151d2a;
+      transition: 0.3s;
+    }
+
+    .light {
+      background: url('https://www.ge.com/news/sites/default/files/Reports/2020-03/GE_Akilli_Ruzgar_Tirbunu_3.2-103-2.jpg') no-repeat center center fixed;
+      background-size: cover;
+    }
+
+    .light .toggle {
+      background: linear-gradient(145deg, #e1e1e1, #fff);
+    }
+
+    .light .toggle .ball {
+      background: #151d2a;
+    }
+
+    .dark {
+      background-color: #0c0c0c;
+      background-blend-mode: overlay;
+    }
+
+    .dark h1 {
+      color: white;
+    }
+
+    .dark .toggle {
+      background: #151d2a;
+      box-shadow: 3px 3px 3px #0e131b, -3px -3px 3px #1c2739;
+    }
+
+    .dark .toggle .ball {
+      background: #fafafa;
+      transform: translateX(40px);
+    }
+
+    .cards {
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+      margin-bottom: 50px;
+      flex-wrap: wrap;
+    }
+
+    .card {
+      background: rgba(255, 255, 255, 0.8);
+      padding: 20px;
+      border-radius: 16px;
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+      width: 220px;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      backdrop-filter: blur(5px);
+    }
+
+    .card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 10px 30px rgba(255, 255, 255, 0.2);
+    }
+
+    .label {
+      font-size: 1rem;
+      font-weight: 600;
+      margin-bottom: 10px;
+    }
+
+    .value {
+      font-size: 2.2rem;
+      font-weight: bold;
+      color: #2c3e50;
+    }
+
+    canvas {
+      width: 500px;
+      height: 700px;
+      margin-top: 40px;
+      background: rgba(255, 255, 255, 0.7);
+      border-radius: 12px;
+      padding: 10px;
+      backdrop-filter: blur(4px);
+    }
+  </style>
+</head>
+
+<body>
+  <h1>ASWIN WINDFARMS</h1>
+
+  <!-- Theme Toggle Button -->
+  <button class="toggle" onclick="toggleTheme()">
+    <i>🌞</i>
+    <i>🌙</i>
+    <div class="ball"></div>
+  </button>
+
+  <div class="cards">
+    <div class="card">
+      <div class="label">TEMPERATURE (°C)</div>
+      <div class="value" id="temp">--</div>
+    </div>
+    <div class="card">
+      <div class="label">VIBRATION</div>
+      <div class="value" id="vib">--</div>
+    </div>
+    <div class="card">
+      <div class="label">SOUND LEVEL</div>
+      <div class="value" id="sound">--</div>
+    </div>
+  </div>
+
+  <canvas id="soundChart" height="100"></canvas>
+
+  <script>
+    function toggleTheme() {
+      const body = document.body;
+      if (body.classList.contains('light')) {
+        body.classList.remove('light');
+        body.classList.add('dark');
+        localStorage.setItem('theme', 'dark');
+      } else {
+        body.classList.remove('dark');
+        body.classList.add('light');
+        localStorage.setItem('theme', 'light');
+      }
+    }
+
+    window.onload = () => {
+      const savedTheme = localStorage.getItem('theme') || 'light';
+      document.body.classList.add(savedTheme);
+
+      fetch('data.json')
+        .then(response => response.json())
+        .then(data => {
+          document.getElementById('temp').textContent = data.temperature + " °C";
+          document.getElementById('vib').textContent = data.vibration === 1 ? "Detected" : "None";
+          document.getElementById('sound').textContent = data.acoustic + " dB";
+
+          updateChart(data.acoustic);
+        });
+    };
+
+    const ctx = document.getElementById('soundChart').getContext('2d');
+    const soundChart = new Chart(ctx, {
+      type: 'line',
+      data: {
+        labels: [],
+        datasets: [{
+          label: 'Acoustic Sensor (Sound Level)',
+          data: [],
+          borderColor: '#ff4081',
+          backgroundColor: 'rgba(255, 64, 129, 0.2)',
+          fill: true,
+          tension: 0.4
+        }]
+      },
+      options: {
+        responsive: true,
+        scales: {
+          x: { title: { display: true, text: 'Time' } },
+          y: { title: { display: true, text: 'Sound Value' }, beginAtZero: true }
+        }
+      }
+    });
+
+    function updateChart(value) {
+      const now = new Date().toLocaleTimeString();
+      const data = soundChart.data;
+      data.labels.push(now);
+      data.datasets[0].data.push(value);
+      if (data.labels.length > 20) {
+        data.labels.shift();
+        data.datasets[0].data.shift();
+      }
+      soundChart.update();
+    }
+  </script>
+</body>
+</html>

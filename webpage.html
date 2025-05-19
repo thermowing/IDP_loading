@@ -1,0 +1,313 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css"
+    integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtV1RW3tvkXWZh58N9jp"
+    crossorigin="anonymous">
+    <!--Import Google Icon Font-->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <!-- Compiled and minified CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+
+    
+    <title>SMART THERMOWING</title>
+    <style>
+        header {
+          position: relative;
+          min-height: 750px;
+          width: 100%;
+          overflow: hidden;
+        }
+
+        .bg-video {
+          position: absolute;
+          top: 0;
+          left: 0;
+          min-width: 100%;
+          min-height: 100%;
+          object-fit: cover;
+          z-index: -1;
+        }
+
+
+        .section{
+            padding-top: 4vw;
+            padding-bottom: 4vw;
+        }
+
+        h2 {
+            margin-bottom: 40px; /* or adjust as needed */
+        }
+
+        .tabs .indicator{
+            background-color: #009245;
+        }
+
+        .tabs .tab a:focus, .tabs a:focus.active{
+            background: transparent;
+        }
+        .material-icons form{
+            color: #009245;
+        }
+
+        .btn{
+            background-color:#009245;
+        }
+
+        /* Mobile-friendly adjustment */
+        @media screen and (max-width: 500px) {
+        header {
+            min-height: 300px;
+            }
+        }
+
+
+
+</style>
+    
+</head>
+<body>
+    <header>
+      <video autoplay muted loop playsinline class="bg-video">
+        <source src="mainbg.mp4" type="video/mp4">
+      </video>
+      <div class="navbar-fixed">
+        <nav class="nav-wrapper green darken-3">
+          <div class="container">
+            <a href="#" class="brand-logo">Smart Thermowing</a>
+            <a href="#" class="sidenav-trigger" data-target="mobile-links">
+              <i class="material-icons">menu</i>
+            </a>
+            <ul class="right hide-on-med-and-down">
+              <li><a href="#service">Services</a></li>
+              <li><a href="#contact">Contact</a></li>
+              <li><a href="#login">Login</a></li>
+            </ul>
+          </div>
+        </nav>
+      </div>
+      <ul class="sidenav" id="mobile-links">
+        <li><a href="#service">Services</a></li>
+        <li><a href="#contact">Contact</a></li>
+        <li><a href="#login">login</a></li>
+      </ul>
+    </header>
+    <div class="container scrollspy" id="service">
+        <h2 class="green-text text-darken-4">Services</h2>
+        <div class="row">
+            <div class="col s12 l6">
+                <div class="card">
+                    <div class="card-image">
+                        <img src="wind1.jpg" alt="" style="width: 100%; height: 250px;">
+                        <a href="#" class="halfway-fab btn-floating pink pulse">
+                            <i class="material-icons">favorite</i>
+                        </a>
+                    </div>
+                    <div class="card-content">
+                        <span class="card-title green-text text-darken-4"><h4>WINDMILL</h4></span>
+                        <p>View individual windmill health reports with real-time sensor data, predictive analytics, and performance trends. Easily monitor turbine efficiency, fault history, and environmental impact—all from a centralized dashboard.</p>     
+                    </div>
+                    <div class="card-action">
+                        <a href="jaishnu77.html" class="green-text text-darken-4">More details</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col s12 l6">
+                <div class="card">
+                    <div class="card-image">
+                        <img src="pexels-inmortal-producciones-108299-336232.jpg" alt="" style="width: 100%; height: 250px;">
+                        <a href="#" class="halfway-fab btn-floating pink pulse">
+                            <i class="material-icons">favorite</i>
+                        </a>
+                    </div>
+                    <div class="card-content">
+                        <span class="card-title green-text text-darken-4"><h4>DRONE</h4></span>
+                        <p>Monitor each drone’s health, mission history, battery status, and sensor outputs. Get alerts, performance insights, and maintenance logs to ensure smooth aerial operations and reliable windmill inspections.</p>     
+                    </div>
+                    <div class="card-action">
+                        <a href="#" class="green-text text-darken-4">More details</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+ 
+    <!--phases-->
+    <section class = "container section">
+        <h2 class="green-text text-darken-4">Phases</h2>
+        <div class="row">
+            <div class="col s12 l4">
+                <img src="iot.jpg" alt="" class="responsive-img materialboxed" style="width: 330px; height: 220px;">
+            </div>
+            <div class="col s12 l6 offset-l1">
+                <h2 class="green-text text-darken-4">IOT Phase</h2>
+                <p>Sensors collect data, microcontrollers transmit wirelessly using NRF modules, displaying real-time environmental metrics for monitoring turbine conditions remotely.
+                </p>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col s12 l4 push-l7 offset-l1">
+                <img src="drone2.jpg" alt="" class="responsive-img materialboxed" style="width: 330px; height: 220px;">
+            </div>
+            <div class="col s12 l6 pull-l5 ">
+                <h2 class="green-text text-darken-4">Drone Phase</h2>
+                <p>Autonomous drone navigates turbine surroundings, captures visual/audio data, enabling fault detection and environmental analysis with onboard sensors and cameras.
+                </p>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col s12 l4">
+                <img src="ml.jpg" alt="" class="responsive-img materialboxed" style="width: 330px; height: 220px;">
+            </div>
+            <div class="col s12 l6 offset-l1">
+                <h2 class="green-text text-darken-4">ML Phase</h2>
+                <p>Machine learning models analyze sensor and drone data to detect anomalies, classify faults, and predict potential issues in wind turbines.</p>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col s12 l4 push-l7 offset-l1">
+                <img src="cloud.jpg" alt="" class="responsive-img materialboxed" style="width: 330px; height: 220px;">
+            </div>
+            <div class="col s12 l6 pull-l5">
+                <h2 class="green-text text-darken-4">Cloud Phase</h2>
+                <p>Collected data uploads to cloud server, enabling remote access, visualization dashboards, analytics, and integration with web applications for continuous monitoring.</p>
+            </div>
+        </div>
+    </section>
+
+    <!--parallax-->
+    <!-- Video Parallax Section -->
+    <div class="parallax-container">
+      <div class="parallax">
+          <img src="seth-JQCG5KvpUqE-unsplash.jpg" alt="responsive-img">
+      </div>
+  </div>
+
+
+    <section class="container section">
+        <div class="row">
+            <div class="col s12 l5">
+                <h2 class="green-text text-darken-4">What We Do...</h2>
+                <p>Smart Thermowing empowers wind energy with intelligent drones, acoustic monitoring, predictive maintenance, real-time analytics, and eco-friendly innovations to boost turbine performance and protect renewable investments.</p>
+            </div>
+
+            <div class="col s12 l5 offset-l2">
+                <ul class="tabs">
+                    <li class="tab col s6">
+                        <a href="#photography" class="green-text text-darken-4">WINDMILL</a>
+                    </li>
+                    <li class="tab col s6">
+                        <a href="#editing" class="green-text text-darken-4">DRONE</a>
+                    </li>
+                </ul>
+                <div class="col s12" id="photography">
+                    <p class="flow-text green-text text-darken-4">WINDMILL</p>
+                    <p>Our smart system monitors windmill health using drone-based analytics, detecting faults through sensors and machine learning, ensuring maximum efficiency, safety, and supporting renewable energy advancement.</p>
+                </div>
+                <div class="col s12" id="editing">
+                    <p class="flow-text green-text text-darken-4">DRONE</p>
+                    <p>Our autonomous drone inspects windmills, capturing high-resolution data. Equipped with IoT and AI, it identifies structural issues early, reducing downtime and maintenance costs for better energy production.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <!--parallax-->
+    <div class="parallax-container">
+        <div class="parallax">
+            <img src="pexels-pixabay-532192.jpg" alt="responsive-img">
+        </div>
+    </div>
+
+    <section class="section container scrollspy" id="contact">
+        <div class="row">
+            <div class="col s12 l5">
+                <h2 class="green-text text-darken-4">Get In Touch</h2>
+                <p>Have questions or want to collaborate with Smart Thermowing?</p>
+                <p>We’re here to help you elevate your projects with innovative drone solutions and wind energy analytics.</p>
+                <p>Whether you're looking for turbine inspections, drone integration, or custom solutions, our team is ready to assist you.</p>
+                <p>Fill out the form, select the service you need, and let’s connect to build a smarter, greener future together!</p>
+            </div>
+            <div class="col s12 l5 offset-l2">
+                <form action="">
+                    <div class="input-field">
+                        <i class="material-icons form prefix green-text text-darken-3">email</i>
+                        <input type="email" id="email">
+                        <label for="email">Your Email</label>
+                    </div>
+                    <div class="input-field">
+                        <i class="material-icons form prefix green-text text-darken-3">message</i>
+                        <textarea id="message" class="materialize-textarea"></textarea>
+                        <label for="message">Your message</label>
+                    </div>
+                    <div class="input-field">
+                        <input type="text" id="date" class="datepicker">
+                        <label for="date">Choose a date you need me for...</label>
+                    </div>
+                    <div class="input-field">
+                        <p>Services required...</p>
+                        <p>
+                            <label>
+                                <input type="checkbox">
+                                <span>Windmill</span>
+                            </label>
+                        </p>
+                        <p>
+                            <label>
+                                <input type="checkbox">
+                                <span>Drone</span>
+                            </label>
+                        </p>
+                    </div>
+                    <div class="input-field center">
+                        <button class="btn">Submit</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!--footer-->
+    <footer class="page-footer grey darken-3">
+        <div class="container">
+            <div class="row">
+                <div class="col s12 l6">
+                    <h5>Contacts</h5>
+                    <ul>ASWIN KUMAR B - Ph: 6383093225, Emailid: aswinkumarb011@gmail.com</ul>
+                    <ul>HARSHAWARTHAN C N - Ph:7397367968, Emailid: sit22ec029@sairamtap.edu.in </ul>
+                    <ul>HARISH S - Ph: 9940373880, Emailid: sit22ec088@sairamtap.edu.in</ul>
+                    <ul>JAISHNU K - Ph: 9047652991, Emailid: sit22ec041@sairamtap.edu.in</ul>
+                </div>
+                <div class="col s12 l4 offset-l2">
+                    <h5>Address</h5>
+                    <p>Sri Sairam Engineering College, Sai Leo Nagar,West Tambaram Poonthandalam, Village, Chennai, Tamil Nadu -  600 045</p>
+                </div>
+            </div>
+        </div>
+        <div class="footer-copyright grey darken-4">
+            <div class="container center-align">&copy; 2018 Smart Thermowing</div>
+        </div>
+    </footer>
+
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <!-- Compiled and minified JavaScript -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+    <script>
+        $(document).ready(function(){
+            $('.sidenav').sidenav();
+            $('.materialboxed').materialbox();
+            $('.parallax').parallax();
+            $('.tabs').tabs();
+            $('.datepicker').datepicker({});
+            $('.scrollspy').scrollSpy();
+        })
+    </script>
+</body>
+</html>
